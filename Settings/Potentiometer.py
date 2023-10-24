@@ -18,7 +18,6 @@ class Potentiometer:
 
         percentPot = self.__scale__percent(volt)
 
-        # self.potValue = percentPot
         return percentPot
 
     def __scale__percent(self, volt):
@@ -27,12 +26,4 @@ class Potentiometer:
 
     def getPotValue(self):
         return self.ReadPotentiometer()
-
-    # while True:
-    #     potvalue = ReadPotentiometer()
-    #     print(potvalue)
-    #     sleep(1)
-
-
-
 

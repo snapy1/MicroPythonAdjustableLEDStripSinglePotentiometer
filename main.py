@@ -4,7 +4,6 @@ from Settings.Potentiometer import *
 l = LED(15, 60)
 p = Potentiometer(26)
 
-
 currentPotValue = p.getPotValue()
 
 
