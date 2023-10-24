@@ -1,5 +1,4 @@
 import machine
-import neopixel
 from Settings.Brightness import *
 from time import sleep
 
