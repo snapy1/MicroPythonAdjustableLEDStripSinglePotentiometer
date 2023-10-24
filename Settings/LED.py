@@ -4,15 +4,16 @@ from time import sleep
 
 
 class LED:
-    np = None
-    amount = None
-    gpio = None
+    np = None  # neopixel object
+    amount = None  # amount of LED's
+    gpio = None  # GPIO of signal wire for LED's
 
     def __init__(self, gpio, amount):
         self.amount = amount
         self.gpio = gpio
         self.np = neopixel.NeoPixel(machine.Pin(gpio), amount)
 
+    # Flashes LED's x amount of times to look like police sirens. 
     def police(self, amountOfTimes):
         for k in range(amountOfTimes):
             for i in range(self.amount):
@@ -25,17 +26,20 @@ class LED:
 
             sleep(0.05)
 
+    # Turns on all LED at a specific RGB color with a desired brightness 
     def enableAll(self, r, g, b, brightness):
-        bp = Brightness(self.np)
+        bp = Brightness(self.np, self.amount)
         for i in range(self.amount):
             self.np[i] = (r, g, b)
             bp.set_brightness((r, g, b), brightness)
         self.np.write()
 
+    # Changes the color of a single LED at a specific index
     def changeColor(self, index, r, g, b):
         self.np[index] = (r, g, b)
         self.np.write()
 
+    # Loops through all spots in the LED and adjust the color to a desired color.
     def changeAllColor(self, r, g, b):
         for i in range(self.amount):
             self.np[i] = (r, g, b)
@@ -44,6 +48,9 @@ class LED:
     def getAmount(self):
         return self.amount
 
+    # An alternative way of using the potentiometer to adjust the LED strip
+    # but the bottom method is the best way to get more out of the
+    # LED spectrum when working with the full range of RGB
     def setValueWithPercentage(self, percentage):
 
         if percentage < 0:
@@ -65,6 +72,8 @@ class LED:
 
         self.changeAllColor(R, G, B)
 
+    # Takes 4 RGB values and allows for adjustment between all four of those values
+    # with a corresponding potentiometer value of 0 - 100.
     def gradientWithPercentage(self, percentage):
         colors = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (128, 0, 128)]
         # Ensure percentage is between 0 and 100
