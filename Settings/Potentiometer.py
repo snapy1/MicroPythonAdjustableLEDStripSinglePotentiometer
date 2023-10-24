@@ -3,8 +3,6 @@ from machine import ADC
 
 class Potentiometer:
     adcpin = None
-    updateRate = None
-    potValue = None
 
     def __init__(self, gpio):
         self.adcpin = gpio
