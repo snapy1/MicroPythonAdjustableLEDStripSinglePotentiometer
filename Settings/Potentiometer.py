@@ -8,7 +8,6 @@ class Potentiometer:
 
     def __init__(self, gpio):
         self.adcpin = gpio
-        # self.updateRate = updateRate
 
     def ReadPotentiometer(self):
         pot = ADC(self.adcpin)
