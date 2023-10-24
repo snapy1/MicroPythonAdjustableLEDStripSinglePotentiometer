@@ -1,5 +1,4 @@
 from machine import ADC
-from time import sleep
 
 
 class Potentiometer:
