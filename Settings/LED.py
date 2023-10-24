@@ -13,8 +13,8 @@ class LED:
         self.gpio = gpio
         self.np = neopixel.NeoPixel(machine.Pin(gpio), amount)
 
-    def police(self):
-        for k in range(100):
+    def police(self, amountOfTimes):
+        for k in range(amountOfTimes):
             for i in range(self.amount):
                 self.changeColor(i, 0, 0, 255)
 
